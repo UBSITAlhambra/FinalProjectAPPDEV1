@@ -1,35 +1,44 @@
-<div class="quiz-container">
-    <form [formGroup]="quizForm" (ngSubmit)="onSubmit()">
-      <h2>🚗 Transportation</h2>
-      <label>How often do you drive per week?</label>
-      <select formControlName="driving">
-        <option value="0">Never</option>
-        <option value="1">1-2 days</option>
-        <option value="2">3-5 days</option>
-        <option value="3">Daily</option>
-      </select>
+<div class="quiz-container" [ngClass]="{ 'green-theme': true }">
+    <h2>Carbon Footprint Quiz</h2>
   
-      <h2>🍔 Diet</h2>
-      <label>How often do you eat meat?</label>
-      <select formControlName="meat">
-        <option value="0">Never</option>
-        <option value="1">Rarely</option>
-        <option value="2">Sometimes</option>
-        <option value="3">Often</option>
-      </select>
+    <form [formGroup]="carbonForm" (ngSubmit)="onSubmit()">
+      <!-- Question 1: Transportation -->
+      <div class="question">
+        <label for="transport">How do you usually commute?</label>
+        <select formControlName="transport" id="transport">
+          <option value="" disabled>Select an option</option>
+          <option value="Car">Car</option>
+          <option value="Public">Public Transport</option>
+          <option value="Bike">Bike</option>
+          <option value="Walk">Walk</option>
+        </select>
+      </div>
   
-      <h2>💡 Electricity</h2>
-      <label>How energy-efficient is your home?</label>
-      <select formControlName="electricity">
-        <option value="0">Very efficient</option>
-        <option value="1">Moderate</option>
-        <option value="2">Inefficient</option>
-      </select>
+      <!-- Question 2: Diet -->
+      <div class="question">
+        <label for="diet">What is your typical diet?</label>
+        <select formControlName="diet" id="diet">
+          <option value="" disabled>Select an option</option>
+          <option value="Meat">Meat</option>
+          <option value="Vegetarian">Vegetarian</option>
+          <option value="Vegan">Vegan</option>
+        </select>
+      </div>
+
+      <div class="question">
+        <label for="electricity">How would you rate your electricity usage?</label>
+        <select formControlName="electricity" id="electricity">
+          <option value="" disabled>Select an option</option>
+          <option value="High">High</option>
+          <option value="Medium">Medium</option>
+          <option value="Low">Low</option>
+        </select>
+      </div>
   
-      <button type="submit" [disabled]="quizForm.invalid">Submit</button>
+      <button type="submit" [disabled]="carbonForm.invalid">Submit</button>
     </form>
   
-    <div *ngIf="submitted">
+    <div *ngIf="score > 0">
       <h3>Your Score: {{ score }}</h3>
       <p>{{ feedback }}</p>
     </div>
