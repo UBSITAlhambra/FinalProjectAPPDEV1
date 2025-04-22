@@ -1,0 +1,37 @@
+<div class="quiz-container">
+    <form [formGroup]="quizForm" (ngSubmit)="onSubmit()">
+      <h2>🚗 Transportation</h2>
+      <label>How often do you drive per week?</label>
+      <select formControlName="driving">
+        <option value="0">Never</option>
+        <option value="1">1-2 days</option>
+        <option value="2">3-5 days</option>
+        <option value="3">Daily</option>
+      </select>
+  
+      <h2>🍔 Diet</h2>
+      <label>How often do you eat meat?</label>
+      <select formControlName="meat">
+        <option value="0">Never</option>
+        <option value="1">Rarely</option>
+        <option value="2">Sometimes</option>
+        <option value="3">Often</option>
+      </select>
+  
+      <h2>💡 Electricity</h2>
+      <label>How energy-efficient is your home?</label>
+      <select formControlName="electricity">
+        <option value="0">Very efficient</option>
+        <option value="1">Moderate</option>
+        <option value="2">Inefficient</option>
+      </select>
+  
+      <button type="submit" [disabled]="quizForm.invalid">Submit</button>
+    </form>
+  
+    <div *ngIf="submitted">
+      <h3>Your Score: {{ score }}</h3>
+      <p>{{ feedback }}</p>
+    </div>
+  </div>
+  
