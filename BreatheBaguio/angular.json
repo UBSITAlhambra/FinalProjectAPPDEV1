@@ -26,7 +26,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
+            "styles": ["node_modules/bootstrap/dist/css/bootstrap.css",
               "src/styles.css"
             ],
             "scripts": [],
@@ -97,5 +97,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "65857458-8cfe-487f-8162-8a8cc6388eaf"
   }
 }
