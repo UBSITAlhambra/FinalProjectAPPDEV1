@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { ForumComponent } from './forum/forum.component';
 
 @Component({
   selector: 'app-contact',
-  imports: [],
+  imports: [ForumComponent],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css'
 })
