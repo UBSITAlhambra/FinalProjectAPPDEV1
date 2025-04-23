@@ -26,7 +26,11 @@
                 "input": "public"
               }
             ],
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.css",
+
+            "styles": [
+              "https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/lumen/bootstrap.min.css",
+              "node_modules/bootstrap/dist/css/bootstrap.css"
+
               "src/styles.css"
             ],
             "scripts": [],
