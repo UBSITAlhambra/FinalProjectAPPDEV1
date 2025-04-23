@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { HeaderComponent } from './header/header.component';
+import { CommonModule } from '@angular/common';
 
 
 import { AboutComponent } from './about/about.component';
@@ -24,6 +26,7 @@ import { MainContentComponent } from './main-content/main-content.component';
 
 @Component({
   selector: 'app-root',
+
   
 
   templateUrl: './app.component.html',
@@ -32,6 +35,7 @@ import { MainContentComponent } from './main-content/main-content.component';
   imports: [RouterModule, HomeComponent,HeaderComponent,FooterComponent, MainContentComponent,MediaGalleryComponent, 
            RouterOutlet,AboutComponent, ContactComponent, HomeComponent, FormsModule,
            ]  // Import RouterModule here
+
 })
 export class AppComponent {
   title = 'BreatheBaguio';
