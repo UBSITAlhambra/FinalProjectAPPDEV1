@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './about/contact/contact.component';
+import { FormsModule } from '@angular/forms';
+
 import { MediaGalleryComponent } from './pages/media-gallery/media-gallery.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
@@ -16,10 +21,12 @@ import { MainContentComponent } from './main-content/main-content.component';
 
 @Component({
   selector: 'app-root',
+  
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   standalone: true,
-  imports: [RouterModule, HomeComponent,HeaderComponent,FooterComponent, MainContentComponent,MediaGalleryComponent, RouterOutlet]  // Import RouterModule here
+  imports: [RouterModule, HomeComponent,HeaderComponent,FooterComponent, MainContentComponent,MediaGalleryComponent, 
+           RouterOutlet,AboutComponent, ContactComponent, HomeComponent, FormsModule]  // Import RouterModule here
 })
 export class AppComponent {
   title = 'BreatheBaguio';
