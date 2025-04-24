@@ -1,0 +1,28 @@
+<section class="forum">
+    <h2>Community Forum</h2>
+    <p>Register/login to join discussions.</p>
+  
+    <div class="actions">
+      <button>Login</button>
+      <button>Register</button>
+    </div>
+  
+    <div class="filters">
+      <label *ngFor="let filter of filters">
+        <input type="radio" name="filter" /> {{ filter }}
+      </label>
+    </div>
+  
+    <div class="forum-actions">
+      <textarea placeholder="Create a post..."></textarea>
+      <button>Post</button>
+    </div>
+  
+    <div class="discussion">
+      <p><strong>User123:</strong> Commented on local tree planting 🌲</p>
+      <button>👍 Like</button>
+      <button>💬 Comment</button>
+      <button>🏷️ Tag</button>
+    </div>
+  </section>
+  
