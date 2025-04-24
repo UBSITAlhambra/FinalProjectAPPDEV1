@@ -1,28 +1,42 @@
-<section class="forum">
-    <h2>Community Forum</h2>
-    <p>Register/login to join discussions.</p>
+<div class="forum-container">
+  <h2>Community Forum</h2>
+  <p>Register/login to join discussions.</p>
   
-    <div class="actions">
-      <button>Login</button>
-      <button>Register</button>
+  <!-- Post Filters -->
+  <div class="filters">
+    <button class="btn btn-info">Latest</button>
+    <button class="btn btn-info">Trending</button>
+    <button class="btn btn-info">Nearby</button>
+    <button class="btn btn-info">Upcoming Events</button>
+  </div>
+
+  <div class="post-list mt-4">
+    <h3>Posts</h3>
+
+    <!-- Loop through the posts using *ngFor -->
+    <div *ngFor="let post of posts" class="post">
+      <h4>{{ post.title }}</h4>
+      <p>{{ post.content }}</p>
+
+      <!-- Like and Comment Actions -->
+      <button (click)="likePost(post.id)" class="btn btn-primary">Like</button>
+      <button (click)="commentOnPost(post.id)" class="btn btn-secondary">Comment</button>
     </div>
+  </div>
   
-    <div class="filters">
-      <label *ngFor="let filter of filters">
-        <input type="radio" name="filter" /> {{ filter }}
-      </label>
-    </div>
-  
-    <div class="forum-actions">
-      <textarea placeholder="Create a post..."></textarea>
-      <button>Post</button>
-    </div>
-  
-    <div class="discussion">
-      <p><strong>User123:</strong> Commented on local tree planting 🌲</p>
-      <button>👍 Like</button>
-      <button>💬 Comment</button>
-      <button>🏷️ Tag</button>
-    </div>
-  </section>
-  
+  <!-- Optional: Add a form for creating posts -->
+  <div class="create-post mt-4">
+    <h4>Create a new post:</h4>
+    <form>
+      <div class="form-group">
+        <label for="postTitle">Title</label>
+        <input type="text" id="postTitle" class="form-control" placeholder="Enter post title">
+      </div>
+      <div class="form-group">
+        <label for="postContent">Content</label>
+        <textarea id="postContent" class="form-control" placeholder="Enter post content"></textarea>
+      </div>
+      <button type="submit" class="btn btn-success mt-2">Create Post</button>
+    </form>
+  </div>
+</div>
