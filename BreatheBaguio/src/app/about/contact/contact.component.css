@@ -1,0 +1,27 @@
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+  }
+  
+  h2 {
+    color: #136B66;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  button {
+    margin-top: 10px;
+  }
+  
+  .btn-info {
+    margin-top: 20px;
+    background-color: #91D0C5;
+    border-color: #91D0C5;
+  }
+  
+  p {
+    margin-top: 10px;
+  }
+  
