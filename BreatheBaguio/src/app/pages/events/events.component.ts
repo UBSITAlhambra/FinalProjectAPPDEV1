@@ -23,6 +23,34 @@ export class EventsComponent {
       location: 'Online',
       description: 'Virtual session on cleanup best practices and climate education.',
       rsvpLink: 'https://youtu.be/dQw4w9WgXcQ?si=oX__nNXnetJKWXDp'
+    },
+    {
+      title: 'Eco-Brick Workshop',
+      date: '2025-05-18',
+      location: 'Baguio Makerspace',
+      description: 'Hands-on workshop on creating eco-bricks from plastic waste.',
+      rsvpLink: 'https://example.com/ecobrick'
+    },
+    {
+      title: 'Zero Waste Lifestyle Talk',
+      date: '2025-05-22',
+      location: 'University of the Cordilleras',
+      description: 'Learn practical ways to live a zero-waste lifestyle.',
+      rsvpLink: 'https://example.com/zerowaste'
+    },
+    {
+      title: 'Sustainable Gardening Meetup',
+      date: '2025-05-25',
+      location: 'Baguio Botanical Garden',
+      description: 'Meet with fellow gardeners to exchange tips on sustainable gardening.',
+      rsvpLink: 'https://example.com/gardening'
+    },
+    {
+      title: 'Green Tech Expo',
+      date: '2025-05-30',
+      location: 'SM Baguio Convention Center',
+      description: 'Explore the latest innovations in renewable energy and green technology.',
+      rsvpLink: 'https://example.com/greentech'
     }
   ];
 }
