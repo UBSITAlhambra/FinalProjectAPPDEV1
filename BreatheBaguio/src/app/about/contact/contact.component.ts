@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
-import { ForumComponent } from './forum/forum.component';
+import { FormsModule } from '@angular/forms';  // To enable ngModel
+import { ForumComponent } from './forum/forum.component';  // Import ForumComponent
+import { CommonModule } from '@angular/common';  // Import CommonModule to support *ngIf, *ngFor
 
 @Component({
   selector: 'app-contact',
-  imports: [ForumComponent],
+  standalone: true,  // Mark this as a standalone component
+  imports: [FormsModule, ForumComponent, CommonModule],  // Import FormsModule, ForumComponent, and CommonModule
   templateUrl: './contact.component.html',
-  styleUrl: './contact.component.css'
+  styleUrls: ['./contact.component.css']
 })
 export class ContactComponent {
   contact = {
@@ -13,10 +16,15 @@ export class ContactComponent {
     message: ''
   };
 
+  showForum = false;  // Flag to toggle forum visibility
+
   // Method to handle form submission
   onSubmit() {
-    // You can process the form data here (e.g., send it to a server)
     alert(`Message sent from: ${this.contact.email}`);
     this.contact = { email: '', message: '' }; // Reset form after submission
+  }
+
+  toggleForum() {
+    this.showForum = !this.showForum;  // Toggle forum visibility
   }
 }
