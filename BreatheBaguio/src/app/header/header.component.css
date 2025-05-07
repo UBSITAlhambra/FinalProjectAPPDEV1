@@ -1,38 +1,26 @@
-header {
-    background-color: #f8f9fa; /* Light gray background */
-    padding: 1rem 0;
-    border-bottom: 1px solid #e9ecef; /* Subtle bottom border */
-  }
-  
-  nav {
-    display: flex;
-    justify-content: center; /* Center the navigation links */
-  }
-  
-  nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex; /* Arrange list items horizontally */
-  }
-  
-  nav ul li {
-    margin: 0 1rem; /* Spacing between links */
-  }
-  
-  nav ul li a {
-    color: #343a40; /* Dark gray text color */
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    border-radius: 0.25rem; /* Slightly rounded corners */
-    transition: background-color 0.15s ease-in-out; /* Smooth hover effect */
-  }
-  
-  nav ul li a:hover {
-    background-color: #e9ecef; /* Light gray hover background */
-  }
-  
-  nav ul li a.active {
-    color: #007bff; /* Primary blue color for active link */
-    font-weight: 500; /* Slightly bold for active link */
-  }
+/* Scope styles only to your custom nav */
+.custom-navbar .navbar-nav {
+  display: flex;
+  gap: 1rem; /* Adds space between nav items */
+}
+
+.custom-navbar .navbar-brand {
+  margin-right: 0.5rem; /* Adjust as needed */
+}
+
+.custom-navbar .nav-link {
+  color: #045e13;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.custom-navbar .nav-link:hover {
+  background-color: #d4edda; /* Light green on hover */
+  color: #13945e;
+}
+
+.custom-navbar .nav-link.active {
+  color: #13945e;
+  font-weight: 500;
+}
