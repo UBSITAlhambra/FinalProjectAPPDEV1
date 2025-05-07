@@ -51,51 +51,52 @@ export class HomeComponent implements AfterViewInit {
       title: 'Baguio City Climate Action Plan',
       description: 'Discover how Baguio City is addressing climate change through its action plan, focusing on green urban development, renewable energy, and sustainable waste management.',
       link: 'https://baguio.gov.ph/climate-action-plan',
-      imageUrl: 'https://via.placeholder.com/500x300?text=Baguio+City+Climate+Action+Plan'  // Placeholder Image
+      imageUrl: 'https://images.unsplash.com/photo-1584270354949-1d7f5d5c0e5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60' // A scenic view of Baguio City
     },
     {
       title: 'Philippine Climate Change Commission',
       description: 'Learn about the national body responsible for spearheading climate action efforts across the Philippines, including disaster preparedness and climate resilience.',
       link: 'https://climate.gov.ph/',
-      imageUrl: 'https://via.placeholder.com/500x300?text=Philippine+Climate+Change+Commission'  // Placeholder Image
+      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/6/6a/Climate_Change_Commission_of_the_Philippines.svg' // Official logo of the Climate Change Commission
     },
     {
       title: 'Baguio Tree Planting Initiatives',
       description: 'Get involved in Baguio\'s tree planting programs, which help mitigate climate change by improving air quality and restoring green spaces.',
       link: 'https://baguio.gov.ph/tree-planting',
-      imageUrl: 'https://via.placeholder.com/500x300?text=Baguio+Tree+Planting+Initiatives'  // Placeholder Image
+      imageUrl: 'https://www.pna.gov.ph/images/2022/09/09/tree_planting.jpg' // Tree planting activity in the Philippines
     },
     {
       title: 'Philippine Green Building Council (PHILGBC)',
       description: 'Promote sustainable architecture and eco-friendly construction practices with the Philippine Green Building Council’s initiatives on green building certifications and sustainable urban designs.',
       link: 'https://philgbc.org/',
-      imageUrl: 'https://via.placeholder.com/500x300?text=Philippine+Green+Building+Council'  // Placeholder Image
+      imageUrl: 'https://www.philgbc.org/wp-content/uploads/2020/10/PHILGBC-logo.png' // PHILGBC official logo
     },
     {
       title: 'DOST-PAGASA Weather and Climate Services',
       description: 'The Department of Science and Technology’s PAGASA provides critical weather data and climate forecasting to help manage disaster risk and climate-related challenges in the Philippines.',
       link: 'https://www.pagasa.dost.gov.ph/',
-      imageUrl: 'https://via.placeholder.com/500x300?text=DOST-PAGASA+Weather+and+Climate+Services'  // Placeholder Image
+      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/6/6f/Philippine_Atmospheric%2C_Geophysical_and_Astronomical_Services_Administration_%28PAGASA%29_logo.svg' // PAGASA official logo
     },
     {
       title: 'Sustainable Transportation in Baguio',
       description: 'Learn about Baguio’s initiatives to reduce traffic congestion and pollution through sustainable transport solutions like electric vehicles and bike lanes.',
       link: 'https://baguio.gov.ph/sustainable-transportation',
-      imageUrl: 'https://via.placeholder.com/500x300?text=Sustainable+Transportation+in+Baguio'  // Placeholder Image
+      imageUrl: 'https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60' // Image representing sustainable transportation
     },
     {
       title: 'Climate-Resilient Farming in the Philippines',
       description: 'Discover sustainable farming practices and climate-resilient agriculture in the Philippines, helping farmers adapt to changing weather patterns.',
       link: 'https://www.philippineclimateagriculture.org/',
-      imageUrl: 'https://via.placeholder.com/500x300?text=Climate-Resilient+Farming+in+the+Philippines'  // Placeholder Image
+      imageUrl: 'https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60' // Image of farming in the Philippines
     },
     {
       title: 'Philippine Disaster Resilience Foundation (PDRF)',
       description: 'Explore how the Philippine Disaster Resilience Foundation is working to build disaster resilience in communities through partnerships and resources.',
       link: 'https://www.pdrf.org.ph/',
-      imageUrl: 'https://via.placeholder.com/500x300?text=Philippine+Disaster+Resilience+Foundation'  // Placeholder Image
+      imageUrl: 'https://www.pdrf.org.ph/wp-content/uploads/2021/09/PDRF-logo.png' // PDRF official logo
     }
   ];
+  
 
   constructor(private sanitizer: DomSanitizer) {}
 
