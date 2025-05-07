@@ -103,8 +103,8 @@ export class HomeComponent implements AfterViewInit {
 
   ngOnInit() {
     const rawVideos = [
-      'https://www.youtube.com/embed/dQw4w9WgXcQ',
-      'https://www.youtube.com/embed/oHg5SJYRHA0'
+      'https://www.youtube.com/embed/_xBKBczmfP0', 
+      'https://www.youtube.com/embed/h33Sc3Z9sr4'
     ];
 
     this.mediaList = rawVideos.map(url => ({

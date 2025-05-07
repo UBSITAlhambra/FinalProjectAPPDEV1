@@ -1,10 +1,10 @@
 <div class="quiz-container white-theme">
-  <h2>Carbon Footprint Quiz</h2>
+  <h2 class="quiz-title">🌱 Carbon Footprint Quiz</h2>
 
-  <form [formGroup]="carbonForm" (ngSubmit)="onSubmit()">
-    <!-- Question 1: Transport -->
-    <div class="question">
-      <label for="transport">How do you usually commute?</label>
+  <form [formGroup]="carbonForm" (ngSubmit)="onSubmit()" class="quiz-form">
+    <!-- Q1: Transport (Multiple Choice) -->
+    <div class="question slide-in">
+      <label for="transport">🚗 How do you usually commute?</label>
       <select formControlName="transport" id="transport">
         <option value="" disabled>Select an option</option>
         <option value="Car">Car</option>
@@ -14,9 +14,9 @@
       </select>
     </div>
 
-    <!-- Question 2: Diet -->
-    <div class="question">
-      <label for="diet">What is your typical diet?</label>
+    <!-- Q2: Diet (Multiple Choice) -->
+    <div class="question slide-in">
+      <label for="diet">🥗 What is your typical diet?</label>
       <select formControlName="diet" id="diet">
         <option value="" disabled>Select an option</option>
         <option value="Meat">Meat</option>
@@ -25,39 +25,81 @@
       </select>
     </div>
 
-    <!-- Question 3: Electricity -->
-    <div class="question">
-      <label for="electricity">How would you rate your electricity usage?</label>
-      <select formControlName="electricity" id="electricity">
-        <option value="" disabled>Select an option</option>
-        <option value="High">High</option>
-        <option value="Medium">Medium</option>
-        <option value="Low">Low</option>
-      </select>
+    <!-- Q3: Rating Scale for Electricity Usage -->
+    <div class="question slide-in">
+      <label for="electricity">💡 How would you rate your electricity usage?</label>
+      <div class="rating-scale">
+        <input type="radio" formControlName="electricity" id="electricity-high" value="High" />
+        <label for="electricity-high">High</label>
+
+        <input type="radio" formControlName="electricity" id="electricity-medium" value="Medium" />
+        <label for="electricity-medium">Medium</label>
+
+        <input type="radio" formControlName="electricity" id="electricity-low" value="Low" />
+        <label for="electricity-low">Low</label>
+      </div>
     </div>
 
-    <!-- Question 4: Insulation -->
-    <div class="question">
-      <label>Which insulation measures does your home have? (Select all that apply)</label>
+    <!-- Q4: Slider for Water Usage -->
+    <div class="question slide-in">
+      <label for="water">🚿 How do you manage water usage at home?</label>
+      <input type="range" formControlName="water" id="water" min="0" max="100" step="5" />
+      <p>Current value: {{ carbonForm.value.water }}%</p>
+    </div>
+
+    <!-- Q5: Checkbox for Insulation Measures -->
+    <div class="question slide-in">
+      <label>🏠 Which insulation measures does your home have?</label>
       <div *ngFor="let option of insulationOptions; let i = index">
-        <input type="checkbox" [formControl]="insulationControls[i]" />
-        {{ option }}
+        <label class="checkbox-label">
+          <input type="checkbox" [formControl]="insulationControls[i]" />
+          {{ option }}
+        </label>
       </div>
     </div>
 
-    <!-- Question 5: Waste Management -->
-    <div class="question">
-      <label>What waste management practices do you follow? (Select all that apply)</label>
-      <div *ngFor="let option of wasteOptions; let i = index">
-        <input type="checkbox" [formControl]="wasteControls[i]" />
-        {{ option }}
+    <!-- Q6: Text Input for Personal Contribution -->
+    <div class="question slide-in">
+      <label for="contribution">🌍 How do you personally contribute to reducing your carbon footprint?</label>
+      <textarea formControlName="contribution" id="contribution" rows="4" placeholder="Tell us about your efforts..."
+                style="width: 100%; padding: 0.75rem; border-radius: 0.5rem; border: 1px solid #ccc; font-size: 1rem; resize: vertical; transition: border-color 0.3s;">
+      </textarea>
+    </div>
+    
+
+    <!-- Q7: Yes/No for Energy-efficient Appliances -->
+    <div class="question slide-in">
+      <label for="appliances">🔌 Are your home appliances energy-efficient?</label>
+      <div class="yes-no">
+        <input type="radio" formControlName="appliances" id="appliances-yes" value="Yes" />
+        <label for="appliances-yes">Yes</label>
+
+        <input type="radio" formControlName="appliances" id="appliances-no" value="No" />
+        <label for="appliances-no">No</label>
       </div>
     </div>
 
-    <button type="submit" [disabled]="carbonForm.invalid">Submit</button>
+    <!-- Q9: Multiple Correct Answers (Checkbox) -->
+    <div class="question slide-in">
+      <label>♻️ Which of the following items do you regularly recycle?</label>
+      <div *ngFor="let option of recyclingItems; let i = index">
+        <label class="checkbox-label">
+          <input type="checkbox" [formControl]="recyclingControls[i]" />
+          {{ option }}
+        </label>
+      </div>
+    </div>
+
+    <!-- Q10: Date Picker for Next Sustainability Event -->
+    <div class="question slide-in">
+      <label for="event-date">📅 When will you attend your next sustainability event?</label>
+      <input type="date" formControlName="eventDate" id="event-date"/>
+    </div>
+
+    <button type="submit" [disabled]="carbonForm.invalid" class="submit-btn">Submit</button>
   </form>
 
-  <div *ngIf="score > 0">
+  <div *ngIf="score > 0" class="result-box fade-in">
     <h3>Your Score: {{ score }}</h3>
     <p>{{ feedback }}</p>
   </div>
