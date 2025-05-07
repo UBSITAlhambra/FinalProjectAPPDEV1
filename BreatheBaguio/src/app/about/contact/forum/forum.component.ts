@@ -63,6 +63,9 @@ export class ForumComponent {
   // Available tags
   tagOptions = ['latest', 'trending', 'nearby', 'upcoming'];
 
+  // Simulated login status
+  isLoggedIn: boolean = false;
+
   // Get filtered posts based on the current filter
   get filteredPosts(): Post[] {
     if (this.currentFilter === 'all') return this.posts;
@@ -84,6 +87,12 @@ export class ForumComponent {
     console.log('Commenting on Post with ID:', postId);
   }
 
+  // Redirect to auth page if user is not logged in
+  redirectToAuth(): void {
+    console.log('Redirecting to login/register page...');
+    // Replace with router logic if needed
+  }
+
   // Create a new post
   createPost(): void {
     const trimmedTitle = this.newPostTitle.trim();
@@ -94,7 +103,7 @@ export class ForumComponent {
         id: this.posts.length + 1,
         title: trimmedTitle,
         content: trimmedContent,
-        tags: [this.newPostTag] // Use selected tag
+        tags: [this.newPostTag]
       };
 
       this.posts.unshift(newPost);
@@ -103,7 +112,6 @@ export class ForumComponent {
       this.newPostTag = 'latest';
       this.postSuccessMessage = '✅ Post created successfully!';
 
-      // Clear success message after 3 seconds
       setTimeout(() => {
         this.postSuccessMessage = '';
       }, 3000);
