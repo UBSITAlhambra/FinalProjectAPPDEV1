@@ -1,110 +1,106 @@
 /* Forum Component Main Container */
 .forum-container {
-    padding: 20px;
-    background-color: #FBFCFA; /* Powder (White) for purity and simplicity */
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    color: #136B66; /* Caribbean Current (Green) for balance and eco-friendliness */
-  }
-  
-  h2 {
-    font-size: 2rem;
-    color: #136B66; /* Caribbean Current (Green) */
-  }
-  
-  .filters {
-    margin-bottom: 20px;
-  }
-  
-  .filters button {
-    background-color: #169385; /* Dark Cyan for freshness */
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 5px;
-    margin-right: 10px;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-  }
-  
-  .filters button:hover {
-    background-color: #148C8C; /* Cyan for calmness */
-  }
-  
-  .post-list .post {
-    background-color: #ffffff;
-    padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .post-list .post h4 {
-    color: #136B66; /* Caribbean Current (Green) */
-    font-size: 1.25rem;
-  }
-  
-  .post-list .post p {
-    color: #8F77A8; /* African Violet for creativity */
-  }
-  
-  .post-list .post button {
-    background-color: #91D0C5; /* Tiffany Blue for trust and stability */
-    color: #136B66; /* Caribbean Current (Green) */
-    border: none;
-    padding: 6px 12px;
-    border-radius: 5px;
-    font-weight: bold;
-    margin-right: 8px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .post-list .post button:hover {
-    background-color: #B8A6CB; /* Lilac (Purple) for wisdom and creativity */
-  }
-  
-  /* Create Post Section */
-  .create-post {
-    margin-top: 30px;
-  }
-  
-  .create-post h4 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-    color: #136B66; /* Caribbean Current (Green) */
-  }
-  
-  .create-post input,
-  .create-post textarea {
-    background-color: #FBFCFA; /* Powder (White) */
-    border: 1px solid #91D0C5; /* Tiffany Blue */
-    border-radius: 5px;
-    padding: 10px;
-    font-size: 1rem;
-    color: #136B66; /* Caribbean Current (Green) */
-    margin-bottom: 10px;
-  }
-  
-  .create-post button {
-    background-color: #136B66; /* Caribbean Current (Green) */
-    color: #ffffff;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .create-post button:hover {
-    background-color: #91D0C5; /* Tiffany Blue */
-  }
-  
-  /* Optional styling for the forum container */
-  .forum-container {
-    background-color: #FBFCFA; /* Powder for cleanliness and simplicity */
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
+  padding: 20px;
+  background-color: #FBFCFA; /* Powder (White) for purity and simplicity */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: #136B66; /* Caribbean Current (Green) for balance and eco-friendliness */
+}
+
+/* Headings */
+h2 {
+  font-size: 2rem;
+  color: #136B66;
+}
+
+/* Filter Buttons */
+.filters {
+  margin-bottom: 20px;
+}
+
+.filters button {
+  background-color: #169385; /* Dark Cyan */
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  margin-right: 10px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.filters button:hover {
+  background-color: #148C8C; /* Cyan */
+}
+
+/* Post List Styling */
+.post-list .post {
+  background-color: #ffffff;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.post-list .post h4 {
+  color: #136B66;
+  font-size: 1.25rem;
+}
+
+.post-list .post p {
+  color: #8F77A8; /* African Violet */
+}
+
+.post-list .post button {
+  background-color: #91D0C5; /* Tiffany Blue */
+  color: #136B66;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-right: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.post-list .post button:hover {
+  background-color: #B8A6CB; /* Lilac */
+}
+
+/* Create Post Section */
+.create-post {
+  margin-top: 30px;
+}
+
+.create-post h4 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #136B66;
+}
+
+.create-post input,
+.create-post textarea {
+  background-color: #FBFCFA;
+  border: 1px solid #91D0C5;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1rem;
+  color: #136B66;
+  margin-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.create-post button {
+  background-color: #136B66;
+  color: #ffffff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.create-post button:hover {
+  background-color: #91D0C5;
+}
