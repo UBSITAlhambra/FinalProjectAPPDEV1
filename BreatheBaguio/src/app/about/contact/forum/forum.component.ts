@@ -50,50 +50,65 @@ export class ForumComponent {
     }
   ];
 
-  currentFilter: string = 'all'; // Default to 'all' posts
+  currentFilter: string = 'all';
 
   // Form input values
   newPostTitle = '';
   newPostContent = '';
   newPostTag: string = 'latest';
 
-  // Success message after creating post
-  postSuccessMessage: string = '';
-
-  // Available tags
+  // Tags
   tagOptions = ['latest', 'trending', 'nearby', 'upcoming'];
 
-  // Simulated login status
-  isLoggedIn: boolean = false;
+  // Success message
+  postSuccessMessage: string = '';
 
-  // Get filtered posts based on the current filter
+  // Login state
+  isLoggedIn: boolean = false;
+  username: string = '';
+  password: string = '';
+  authError: string = '';
+  showAuthForm: boolean = false;
+
+  // Filter logic
   get filteredPosts(): Post[] {
     if (this.currentFilter === 'all') return this.posts;
     return this.posts.filter(post => post.tags.includes(this.currentFilter));
   }
 
-  // Set current post filter
   setFilter(filter: string): void {
     this.currentFilter = filter;
   }
 
-  // Like a post
   likePost(postId: number): void {
     console.log('Liked Post with ID:', postId);
   }
 
-  // Comment on a post
   commentOnPost(postId: number): void {
     console.log('Commenting on Post with ID:', postId);
   }
 
-  // Redirect to auth page if user is not logged in
-  redirectToAuth(): void {
-    console.log('Redirecting to login/register page...');
-    // Replace with router logic if needed
+  toggleAuthForm(): void {
+    this.showAuthForm = !this.showAuthForm;
+    this.authError = '';
   }
 
-  // Create a new post
+  login(): void {
+    if (this.username.trim() && this.password.trim()) {
+      this.isLoggedIn = true;
+      this.showAuthForm = false;
+      this.authError = '';
+    } else {
+      this.authError = '⚠️ Please enter both username and password.';
+    }
+  }
+
+  logout(): void {
+    this.isLoggedIn = false;
+    this.username = '';
+    this.password = '';
+  }
+
   createPost(): void {
     const trimmedTitle = this.newPostTitle.trim();
     const trimmedContent = this.newPostContent.trim();
