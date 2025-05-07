@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router'; // Required for navigation
 
 interface Post {
   id: number;
@@ -17,6 +18,10 @@ interface Post {
   styleUrls: ['./forum.component.css']
 })
 export class ForumComponent {
+  constructor(private router: Router) {} // Inject Router
+
+  isLoggedIn: boolean = false;
+
   posts: Post[] = [
     {
       id: 1,
@@ -50,26 +55,26 @@ export class ForumComponent {
     }
   ];
 
-  currentFilter: string = 'all'; // Default to 'all' posts
+  currentFilter: string = 'all'; // Default filter
 
   // Form input values
   newPostTitle = '';
   newPostContent = '';
   newPostTag: string = 'latest';
 
-  // Success message after creating post
+  // Success message
   postSuccessMessage: string = '';
 
-  // Available tags
+  // Available tag options
   tagOptions = ['latest', 'trending', 'nearby', 'upcoming'];
 
-  // Get filtered posts based on the current filter
+  // Computed filtered posts
   get filteredPosts(): Post[] {
     if (this.currentFilter === 'all') return this.posts;
     return this.posts.filter(post => post.tags.includes(this.currentFilter));
   }
 
-  // Set current post filter
+  // Update filter
   setFilter(filter: string): void {
     this.currentFilter = filter;
   }
@@ -84,8 +89,9 @@ export class ForumComponent {
     console.log('Commenting on Post with ID:', postId);
   }
 
-  // Create a new post
+  // Create new post
   createPost(): void {
+    console.log('Redirecting to login or register page...');
     const trimmedTitle = this.newPostTitle.trim();
     const trimmedContent = this.newPostContent.trim();
 
@@ -94,7 +100,7 @@ export class ForumComponent {
         id: this.posts.length + 1,
         title: trimmedTitle,
         content: trimmedContent,
-        tags: [this.newPostTag] // Use selected tag
+        tags: [this.newPostTag]
       };
 
       this.posts.unshift(newPost);
@@ -103,10 +109,14 @@ export class ForumComponent {
       this.newPostTag = 'latest';
       this.postSuccessMessage = '✅ Post created successfully!';
 
-      // Clear success message after 3 seconds
       setTimeout(() => {
         this.postSuccessMessage = '';
       }, 3000);
     }
+  }
+
+  // Redirect to login or registration page
+  redirectToAuth(): void {
+    this.router.navigate(['/auth']); // Change to your desired route like '/login' or '/register'
   }
 }
