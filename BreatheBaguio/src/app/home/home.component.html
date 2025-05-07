@@ -10,14 +10,14 @@
   </p>
 
   <!-- First Row: 3 Cards -->
-  <div class="row">
+  <div class="row mt-5 mb-5">
     <div class="col-md-4 mb-4">
       <div class="card shadow-sm">
         <img src="https://images.unsplash.com/photo-1552750624-02331736595a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzN8fHN1c3RhaW5hYmxlJTIwY2l0aWVzfGVufDB8fDB8fHww" class="card-img-top card-img-fixed" alt="Sustainable City">
         <div class="card-body">
           <h5 class="card-title" style="font-size: 1.1rem;">SDG 11: Sustainable Cities and Communities</h5>
           <p class="card-text">Learn more about how we can create sustainable and resilient cities for future generations.</p>
-          <a href="#" class="btn btn-success">Learn More</a>
+          <a href="#SDG-11" class="btn btn-success">Learn More</a>
         </div>
       </div>
     </div>
@@ -39,14 +39,14 @@
         <div class="card-body">
           <h5 class="card-title" style="font-size: 1.1rem;">Climate Resources</h5>
           <p class="card-text">Access valuable resources and guides on how to fight climate change in your community.</p>
-          <a href="#climate-resources-section" class="btn btn-success">Explore Resources</a>
+          <a href="#climate-resources" class="btn btn-success">Explore Resources</a>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Second Row: 2 Full-Width Cards -->
-  <div class="container-fluid px-0">
+  <div class="container-fluid px-0 my-5">
     <div class="row gx-3">
       <div class="col-12 col-md-6 mb-4">
         <div class="card shadow-sm h-100">
@@ -72,8 +72,8 @@
     </div>
   </div>
 
-  <!-- Videos Section (dummy for now) -->
-  <div class="row justify-content-center mb-5">
+  <!-- Videos Section -->
+  <div class="row justify-content-center mb-5 mt-5">
     <ng-container *ngFor="let media of mediaList">
       <div *ngIf="media.type === 'video'" class="col-12 col-md-6 mb-4">
         <div class="ratio ratio-16x9">
@@ -88,11 +88,11 @@
     </ng-container>
   </div>
 
-  <div class="container">
-    <h2 class="text-center text-success mb-4 w-100" style="font-size: 2rem; font-weight: bold; margin-top: 40px;">
-      SDG 11
+  <!-- SDG 11 Section -->
+  <div class="container my-5" id="SDG-11">
+    <h2 class="text-center text-success mb-4 w-100" style="font-size: 2rem; font-weight: bold;">
+      About SDG 11
     </h2>
-    <!-- SDG 11 Cards Section -->
     <div class="row row-cols-1 row-cols-md-2 g-4">
       <div *ngFor="let sdg of sdg11Data" class="col">
         <div class="card border-success h-100">
@@ -103,24 +103,22 @@
         </div>
       </div>
     </div>
+  </div>
 
-<!-- Climate Resources Section -->
-<div class="row">
-  <h2 class="text-center text-success mb-4 w-100" style="font-size: 2rem; font-weight: bold; margin-top: 40px;">
-    Climate Resources for Baguio and the Philippines
-  </h2>
-
-  <!-- Resource Cards Container with Custom Class -->
-  <div class="col-md-4 mb-4" *ngFor="let resource of climateResources">
-    <div class="card shadow-sm climate-resource-card">
-      <img [src]="resource.imageUrl" class="card-img-top card-img-fixed" alt="{{ resource.title }}">
-      <div class="card-body">
-        <h5 class="card-title" style="font-size: 1.1rem;">{{ resource.title }}</h5>
-        <p class="card-text">{{ resource.description }}</p>
-        <a [href]="resource.link" class="btn btn-success">Learn More</a>
+  <!-- Climate Resources Section -->
+  <div class="row my-5" id="climate-resources">
+    <h2 class="text-center text-success mb-4 w-100" style="font-size: 2rem; font-weight: bold;">
+      Climate Resources for Baguio and the Philippines
+    </h2>
+    <div class="col-md-4 mb-4" *ngFor="let resource of climateResources">
+      <div class="card shadow-sm climate-resource-card">
+        <img [src]="resource.imageUrl" class="card-img-top card-img-fixed" alt="{{ resource.title }}">
+        <div class="card-body">
+          <h5 class="card-title" style="font-size: 1.1rem;">{{ resource.title }}</h5>
+          <p class="card-text">{{ resource.description }}</p>
+          <a [href]="resource.link" class="btn btn-success">Learn More</a>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
 </div>
