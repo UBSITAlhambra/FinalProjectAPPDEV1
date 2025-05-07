@@ -1,10 +1,17 @@
 import { CommonModule, NgClass, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  FormArray,
+  ReactiveFormsModule
+} from '@angular/forms';
 
 @Component({
   selector: 'quiz-page',
-  imports: [ReactiveFormsModule, NgIf, NgClass, CommonModule],
+  standalone: true,
+  imports: [ReactiveFormsModule, NgIf, CommonModule],
   templateUrl: './quiz-page.component.html',
   styleUrls: ['./quiz-page.component.css']
 })
@@ -13,12 +20,25 @@ export class QuizPageComponent {
   score: number = 0;
   feedback: string = '';
 
+  insulationOptions = ['Wall insulation', 'Roof insulation', 'Double glazing', 'None'];
+  wasteOptions = ['Recycle', 'Compost', 'Reuse', 'Minimal plastic use'];
+
   constructor() {
     this.carbonForm = new FormGroup({
       transport: new FormControl('', Validators.required),
       diet: new FormControl('', Validators.required),
-      electricity: new FormControl('', Validators.required)
+      electricity: new FormControl('', Validators.required),
+      insulation: new FormArray(this.insulationOptions.map(() => new FormControl(false))),
+      waste: new FormArray(this.wasteOptions.map(() => new FormControl(false)))
     });
+  }
+
+  get insulationControls(): FormControl[] {
+    return (this.carbonForm.get('insulation') as FormArray).controls as FormControl[];
+  }
+
+  get wasteControls(): FormControl[] {
+    return (this.carbonForm.get('waste') as FormArray).controls as FormControl[];
   }
 
   onSubmit() {
@@ -32,6 +52,7 @@ export class QuizPageComponent {
     const formValues = this.carbonForm.value;
     this.score = 0;
 
+    // Transport
     if (formValues.transport === 'Car') {
       this.score += 10;
     } else if (formValues.transport === 'Public') {
@@ -40,6 +61,7 @@ export class QuizPageComponent {
       this.score += 2;
     }
 
+    // Diet
     if (formValues.diet === 'Meat') {
       this.score += 10;
     } else if (formValues.diet === 'Vegetarian') {
@@ -48,6 +70,7 @@ export class QuizPageComponent {
       this.score += 2;
     }
 
+    // Electricity
     if (formValues.electricity === 'High') {
       this.score += 10;
     } else if (formValues.electricity === 'Medium') {
@@ -55,6 +78,22 @@ export class QuizPageComponent {
     } else {
       this.score += 2;
     }
+
+    // Insulation: subtract 2 points for each good practice (not "None")
+    formValues.insulation.forEach((selected: boolean, i: number) => {
+      if (selected && this.insulationOptions[i] !== 'None') {
+        this.score -= 2;
+      }
+    });
+
+    // Waste: subtract 1 point for each sustainable practice
+    formValues.waste.forEach((selected: boolean, i: number) => {
+      if (selected) {
+        this.score -= 1;
+      }
+    });
+
+    if (this.score < 0) this.score = 0;
   }
 
   provideFeedback() {
