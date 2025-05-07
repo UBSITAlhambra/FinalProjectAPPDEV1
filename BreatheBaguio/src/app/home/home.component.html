@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <!-- Logo and Intro -->
-  <div class="text-center mb-4">
-    <img src="BBlogo.png" alt="Breathe Baguio Logo" style="height: 300px;">
+  <div class="text-center mb-3">
+    <img src="BBlogo.png" alt="Breathe Baguio Logo" style="height: 250px;">
   </div>
 
   <h1 class="text-center text-success">Welcome to Breathe Baguio</h1>
@@ -19,7 +19,7 @@
             <h5 class="card-title">SDG 11: Sustainable Cities and Communities</h5>
             <p class="card-text">Learn more about how we can create sustainable and resilient cities for future generations.</p>
             <div class="mt-auto">
-              <a routerLink="/about" class="btn btn-success">Learn More</a>
+              <a href="#SDG-11" class="btn btn-success">Learn More</a>
             </div>
           </div>
         </div>
@@ -45,7 +45,7 @@
             <h5 class="card-title">Climate Resources</h5>
             <p class="card-text">Access valuable resources and guides on how to fight climate change in your community.</p>
             <div class="mt-auto">
-              <a routerLink="/resources" class="btn btn-success">Explore Resources</a>
+              <a href="#climate-resources" class="btn btn-success">Explore Resources</a>
             </div>
           </div>
         </div>
@@ -116,20 +116,21 @@
       <h2 class="text-center text-success mb-4 w-100" style="font-size: 2rem; font-weight: bold; margin-top: 40px;">
         Climate Resources for Baguio and the Philippines
       </h2>
-  
+    
       <div class="row">
-        <div class="col-md-4 mb-4" *ngFor="let resource of climateResources">
-          <div class="card shadow-sm climate-resource-card">
+        <div class="col-md-4 mb-4 d-flex" *ngFor="let resource of climateResources">
+          <div class="card shadow-sm climate-resource-card h-100 w-100 d-flex flex-column">
             <img [src]="resource.imageUrl" class="card-img-top card-img-fixed" alt="{{ resource.title }}">
-            <div class="card-body">
+            <div class="card-body d-flex flex-column">
               <h5 class="card-title" style="font-size: 1.1rem;">{{ resource.title }}</h5>
-              <p class="card-text">{{ resource.description }}</p>
-              <a [href]="resource.link" class="btn btn-success" target="_blank" rel="noopener">Learn More</a>
+              <p class="card-text flex-grow-1">{{ resource.description }}</p>
+              <a [href]="resource.link" class="btn btn-success mt-auto" target="_blank" rel="noopener">Learn More</a>
             </div>
           </div>
         </div>
       </div>
     </div>
+    
   </div>
 
 <style>

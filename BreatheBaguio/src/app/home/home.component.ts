@@ -1,6 +1,6 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { CommonModule } from '@angular/common';
+import { isPlatformBrowser, CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +12,6 @@ import { CommonModule } from '@angular/common';
 export class HomeComponent implements AfterViewInit {
   mediaList: { type: string, url: string, safeUrl: SafeResourceUrl }[] = [];
 
-  // SDG 11 data
   sdg11Data = [
     {
       title: 'What is SDG 11?',
@@ -24,7 +23,8 @@ export class HomeComponent implements AfterViewInit {
     },
     {
       title: 'Call to Action',
-      description: `We all play a part in making Baguio more sustainable. Citizens can:
+      description: `
+        We all play a part in making Baguio more sustainable. Citizens can:
         <ul>
           <li>Support eco-friendly policies and public transport.</li>
           <li>Reduce plastic use and properly dispose of waste.</li>
@@ -45,65 +45,66 @@ export class HomeComponent implements AfterViewInit {
     }
   ];
 
-  // Climate resources data
   climateResources = [
     {
       title: 'Baguio City Climate Action Plan',
       description: 'Discover how Baguio City is addressing climate change through its action plan, focusing on green urban development, renewable energy, and sustainable waste management.',
       link: 'https://baguio.gov.ph/climate-action-plan',
-      imageUrl: 'https://unsplash.com/photos/front-view-of-man-with-gas-mask-and-placard-poster-on-landfill-environmental-concept-h6c3EZDsIMQ' // A scenic view of Baguio City
+      imageUrl: 'https://images.unsplash.com/photo-1502791451862-7bd8c1dfc265?auto=format&fit=crop&w=800&q=60'
     },
     {
       title: 'Philippine Climate Change Commission',
       description: 'Learn about the national body responsible for spearheading climate action efforts across the Philippines, including disaster preparedness and climate resilience.',
       link: 'https://climate.gov.ph/',
-      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/6/6a/Climate_Change_Commission_of_the_Philippines.svg' // Official logo of the Climate Change Commission
+      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/6/6a/Climate_Change_Commission_of_the_Philippines.svg'
     },
     {
       title: 'Baguio Tree Planting Initiatives',
       description: 'Get involved in Baguio\'s tree planting programs, which help mitigate climate change by improving air quality and restoring green spaces.',
       link: 'https://baguio.gov.ph/tree-planting',
-      imageUrl: 'https://www.pna.gov.ph/images/2022/09/09/tree_planting.jpg' // Tree planting activity in the Philippines
+      imageUrl: 'https://www.pna.gov.ph/images/2022/09/09/tree_planting.jpg'
     },
     {
       title: 'Philippine Green Building Council (PHILGBC)',
       description: 'Promote sustainable architecture and eco-friendly construction practices with the Philippine Green Building Council’s initiatives on green building certifications and sustainable urban designs.',
       link: 'https://philgbc.org/',
-      imageUrl: 'https://www.philgbc.org/wp-content/uploads/2020/10/PHILGBC-logo.png' // PHILGBC official logo
+      imageUrl: 'https://www.philgbc.org/wp-content/uploads/2020/10/PHILGBC-logo.png'
     },
     {
       title: 'DOST-PAGASA Weather and Climate Services',
       description: 'The Department of Science and Technology’s PAGASA provides critical weather data and climate forecasting to help manage disaster risk and climate-related challenges in the Philippines.',
       link: 'https://www.pagasa.dost.gov.ph/',
-      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/6/6f/Philippine_Atmospheric%2C_Geophysical_and_Astronomical_Services_Administration_%28PAGASA%29_logo.svg' // PAGASA official logo
+      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/6/6f/Philippine_Atmospheric%2C_Geophysical_and_Astronomical_Services_Administration_%28PAGASA%29_logo.svg'
     },
     {
       title: 'Sustainable Transportation in Baguio',
       description: 'Learn about Baguio’s initiatives to reduce traffic congestion and pollution through sustainable transport solutions like electric vehicles and bike lanes.',
       link: 'https://baguio.gov.ph/sustainable-transportation',
-      imageUrl: 'https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60' // Image representing sustainable transportation
+      imageUrl: 'https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60'
     },
     {
       title: 'Climate-Resilient Farming in the Philippines',
       description: 'Discover sustainable farming practices and climate-resilient agriculture in the Philippines, helping farmers adapt to changing weather patterns.',
       link: 'https://www.philippineclimateagriculture.org/',
-      imageUrl: 'https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60' // Image of farming in the Philippines
+      imageUrl: 'https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60'
     },
     {
       title: 'Philippine Disaster Resilience Foundation (PDRF)',
       description: 'Explore how the Philippine Disaster Resilience Foundation is working to build disaster resilience in communities through partnerships and resources.',
       link: 'https://www.pdrf.org.ph/',
-      imageUrl: 'https://www.pdrf.org.ph/wp-content/uploads/2021/09/PDRF-logo.png' // PDRF official logo
+      imageUrl: 'https://www.pdrf.org.ph/wp-content/uploads/2021/09/PDRF-logo.png'
     }
   ];
-  
 
-  constructor(private sanitizer: DomSanitizer) {}
+  constructor(
+    private sanitizer: DomSanitizer,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
 
   ngOnInit() {
     const rawVideos = [
       'https://www.youtube.com/embed/dQw4w9WgXcQ',
-      'https://www.youtube.com/embed/oHg5SJYRHA0'  // Add as many as you like
+      'https://www.youtube.com/embed/oHg5SJYRHA0'
     ];
 
     this.mediaList = rawVideos.map(url => ({
@@ -114,17 +115,19 @@ export class HomeComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', (e) => {
-        e.preventDefault();
-        const targetId = anchor.getAttribute('href');
-        if (targetId) {
-          const targetElement = document.querySelector(targetId);
-          if (targetElement) {
-            targetElement.scrollIntoView({ behavior: 'smooth' });
+    if (isPlatformBrowser(this.platformId)) {
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', (e) => {
+          e.preventDefault();
+          const targetId = anchor.getAttribute('href');
+          if (targetId) {
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              targetElement.scrollIntoView({ behavior: 'smooth' });
+            }
           }
-        }
+        });
       });
-    });
+    }
   }
 }
