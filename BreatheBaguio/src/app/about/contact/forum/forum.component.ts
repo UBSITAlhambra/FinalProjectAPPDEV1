@@ -18,10 +18,8 @@ interface Post {
   styleUrls: ['./forum.component.css']
 })
 export class ForumComponent {
-  constructor(private router: Router) {} // Inject Router
-
-  isLoggedIn: boolean = false;
-
+  isLoggedIn: boolean = false; 
+  
   posts: Post[] = [
     {
       id: 1,
@@ -95,6 +93,8 @@ export class ForumComponent {
     const trimmedTitle = this.newPostTitle.trim();
     const trimmedContent = this.newPostContent.trim();
 
+  
+    
     if (trimmedTitle && trimmedContent) {
       const newPost: Post = {
         id: this.posts.length + 1,
@@ -115,8 +115,7 @@ export class ForumComponent {
     }
   }
 
-  // Redirect to login or registration page
   redirectToAuth(): void {
-    this.router.navigate(['/auth']); // Change to your desired route like '/login' or '/register'
+    console.log('Redirecting to login or register page...');
   }
 }
