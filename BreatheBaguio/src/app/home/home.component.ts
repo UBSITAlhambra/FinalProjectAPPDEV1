@@ -51,7 +51,7 @@ export class HomeComponent implements AfterViewInit {
       title: 'Baguio City Climate Action Plan',
       description: 'Discover how Baguio City is addressing climate change through its action plan, focusing on green urban development, renewable energy, and sustainable waste management.',
       link: 'https://baguio.gov.ph/climate-action-plan',
-      imageUrl: 'https://images.unsplash.com/photo-1584270354949-1d7f5d5c0e5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60' // A scenic view of Baguio City
+      imageUrl: 'https://unsplash.com/photos/front-view-of-man-with-gas-mask-and-placard-poster-on-landfill-environmental-concept-h6c3EZDsIMQ' // A scenic view of Baguio City
     },
     {
       title: 'Philippine Climate Change Commission',

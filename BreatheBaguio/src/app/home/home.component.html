@@ -1,4 +1,5 @@
 <div class="container mt-5">
+  <!-- Logo and Intro -->
   <div class="text-center mb-4">
     <img src="BBlogo.png" alt="Breathe Baguio Logo" style="height: 300px;">
   </div>
@@ -23,17 +24,6 @@
           </div>
         </div>
       </div>
-<<<<<<< HEAD
-    </div>
-
-    <div class="col-md-4 mb-4">
-      <div class="card shadow-sm">
-        <img src="https://images.unsplash.com/photo-1660679983389-50e21b396b7a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHBlbiUyMGFuZCUyMHBhcGVyfGVufDB8fDB8fHww" class="card-img-top card-img-fixed" alt="Carbon Emissions">
-        <div class="card-body">
-          <h5 class="card-title" style="font-size: 1.1rem;">Carbon Quiz</h5>
-          <p class="card-text">Test your knowledge about carbon emissions and how to reduce them in your daily life.</p>
-          <a href="/quiz" class="btn btn-success">Take the Quiz</a>
-=======
   
       <div class="col-md-4 mb-4">
         <div class="card shadow-sm h-100 d-flex flex-column">
@@ -45,7 +35,6 @@
               <a routerLink="/quiz" class="btn btn-success">Take the Quiz</a>
             </div>
           </div>
->>>>>>> 729bf79965e083e8749069d6c2e5c14645cc8b9d
         </div>
       </div>
   
@@ -73,11 +62,7 @@
           <div class="card-body">
             <h5 class="card-title">Community Events</h5>
             <p class="card-text">Get involved in local events that promote environmental sustainability and climate action.</p>
-<<<<<<< HEAD
-            <a href="/events" class="btn btn-success">View Events</a>
-=======
             <a routerLink="/events" class="btn btn-success">View Events</a>
->>>>>>> 729bf79965e083e8749069d6c2e5c14645cc8b9d
           </div>
         </div>
       </div>
@@ -90,14 +75,62 @@
             <p class="card-text">Discover simple habits and lifestyle changes to reduce your ecological footprint every day.</p>
             <a routerLink="/tips" class="btn btn-success">Read Tips</a>
           </div>
-===
         </div>
       </div>
     </div>
-    
-
+    <div class="row justify-content-center mb-5 mt-5">
+      <ng-container *ngFor="let media of mediaList">
+        <div *ngIf="media.type === 'video'" class="col-12 col-md-6 mb-4">
+          <div class="ratio ratio-16x9">
+            <iframe
+              [src]="media.safeUrl"
+              frameborder="0"
+              allow="autoplay; encrypted-media"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  
+    <!-- SDG 11 Section -->
+    <div class="container mt-5" id="SDG-11">
+      <h2 class="text-center text-success mb-4 w-100" style="font-size: 2rem; font-weight: bold; margin-top: 40px;">
+        About SDG 11
+      </h2>
+      <!-- SDG 11 Cards Section -->
+      <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div *ngFor="let sdg of sdg11Data" class="col">
+          <div class="card border-success h-100">
+            <div class="card-body">
+              <h5 class="card-title">{{ sdg.title }}</h5>
+              <div class="card-text" [innerHTML]="sdg.description"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Climate Resources Section -->
+    <div class="container mt-5" id="climate-resources">
+      <h2 class="text-center text-success mb-4 w-100" style="font-size: 2rem; font-weight: bold; margin-top: 40px;">
+        Climate Resources for Baguio and the Philippines
+      </h2>
+  
+      <div class="row">
+        <div class="col-md-4 mb-4" *ngFor="let resource of climateResources">
+          <div class="card shadow-sm climate-resource-card">
+            <img [src]="resource.imageUrl" class="card-img-top card-img-fixed" alt="{{ resource.title }}">
+            <div class="card-body">
+              <h5 class="card-title" style="font-size: 1.1rem;">{{ resource.title }}</h5>
+              <p class="card-text">{{ resource.description }}</p>
+              <a [href]="resource.link" class="btn btn-success" target="_blank" rel="noopener">Learn More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
 
 <style>
   .card-img-fixed {
