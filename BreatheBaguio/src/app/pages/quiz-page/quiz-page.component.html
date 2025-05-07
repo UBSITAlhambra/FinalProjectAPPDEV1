@@ -1,46 +1,64 @@
-<div class="quiz-container" [ngClass]="{ 'green-theme': true }">
-    <h2>Carbon Footprint Quiz</h2>
-  
-    <form [formGroup]="carbonForm" (ngSubmit)="onSubmit()">
-      <!-- Question 1: Transportation -->
-      <div class="question">
-        <label for="transport">How do you usually commute?</label>
-        <select formControlName="transport" id="transport">
-          <option value="" disabled>Select an option</option>
-          <option value="Car">Car</option>
-          <option value="Public">Public Transport</option>
-          <option value="Bike">Bike</option>
-          <option value="Walk">Walk</option>
-        </select>
-      </div>
-  
-      <!-- Question 2: Diet -->
-      <div class="question">
-        <label for="diet">What is your typical diet?</label>
-        <select formControlName="diet" id="diet">
-          <option value="" disabled>Select an option</option>
-          <option value="Meat">Meat</option>
-          <option value="Vegetarian">Vegetarian</option>
-          <option value="Vegan">Vegan</option>
-        </select>
-      </div>
+<div class="quiz-container white-theme">
+  <h2>Carbon Footprint Quiz</h2>
 
-      <div class="question">
-        <label for="electricity">How would you rate your electricity usage?</label>
-        <select formControlName="electricity" id="electricity">
-          <option value="" disabled>Select an option</option>
-          <option value="High">High</option>
-          <option value="Medium">Medium</option>
-          <option value="Low">Low</option>
-        </select>
-      </div>
-  
-      <button type="submit" [disabled]="carbonForm.invalid">Submit</button>
-    </form>
-  
-    <div *ngIf="score > 0">
-      <h3>Your Score: {{ score }}</h3>
-      <p>{{ feedback }}</p>
+  <form [formGroup]="carbonForm" (ngSubmit)="onSubmit()">
+    <!-- Question 1: Transport -->
+    <div class="question">
+      <label for="transport">How do you usually commute?</label>
+      <select formControlName="transport" id="transport">
+        <option value="" disabled>Select an option</option>
+        <option value="Car">Car</option>
+        <option value="Public">Public Transport</option>
+        <option value="Bike">Bike</option>
+        <option value="Walk">Walk</option>
+      </select>
     </div>
+
+    <!-- Question 2: Diet -->
+    <div class="question">
+      <label for="diet">What is your typical diet?</label>
+      <select formControlName="diet" id="diet">
+        <option value="" disabled>Select an option</option>
+        <option value="Meat">Meat</option>
+        <option value="Vegetarian">Vegetarian</option>
+        <option value="Vegan">Vegan</option>
+      </select>
+    </div>
+
+    <!-- Question 3: Electricity -->
+    <div class="question">
+      <label for="electricity">How would you rate your electricity usage?</label>
+      <select formControlName="electricity" id="electricity">
+        <option value="" disabled>Select an option</option>
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+      </select>
+    </div>
+
+    <!-- Question 4: Insulation -->
+    <div class="question">
+      <label>Which insulation measures does your home have? (Select all that apply)</label>
+      <div *ngFor="let option of insulationOptions; let i = index">
+        <input type="checkbox" [formControl]="insulationControls[i]" />
+        {{ option }}
+      </div>
+    </div>
+
+    <!-- Question 5: Waste Management -->
+    <div class="question">
+      <label>What waste management practices do you follow? (Select all that apply)</label>
+      <div *ngFor="let option of wasteOptions; let i = index">
+        <input type="checkbox" [formControl]="wasteControls[i]" />
+        {{ option }}
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="carbonForm.invalid">Submit</button>
+  </form>
+
+  <div *ngIf="score > 0">
+    <h3>Your Score: {{ score }}</h3>
+    <p>{{ feedback }}</p>
   </div>
-  
+</div>
