@@ -92,7 +92,13 @@ export class HomeComponent implements AfterViewInit {
       title: 'Philippine Disaster Resilience Foundation (PDRF)',
       description: 'Explore how the Philippine Disaster Resilience Foundation is working to build disaster resilience in communities through partnerships and resources.',
       link: 'https://www.pdrf.org.ph/',
-      imageUrl: 'https://www.pdrf.org.ph/wp-content/uploads/2021/09/PDRF-logo.png'
+      imageUrl: 'https://www.pdrf.org.ph/wp-content/uploads/2021/09/PDRF-logo.png' // PDRF official logo
+    },
+    {
+      title: 'National Integrated Climated Change Databases and Information Exchange System (NICCIDIES)',
+      description: 'NICCDIES offers comprehensive data on climate change impacts in the Philippines, such as changes in rainfall patterns, droughts, threats to biodiversity and food security, sea-level rise, and public health risks.',
+      link: 'https://niccdies.climate.gov.ph/',
+      imageUrl: 'https://images.unsplash.com/photo-1591696205602-2f950c417cb9?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' // PDRF official logo
     }
   ];
 
