@@ -17,6 +17,8 @@ interface Post {
   styleUrls: ['./forum.component.css']
 })
 export class ForumComponent {
+  isLoggedIn: boolean = false; 
+  
   posts: Post[] = [
     {
       id: 1,
@@ -89,6 +91,8 @@ export class ForumComponent {
     const trimmedTitle = this.newPostTitle.trim();
     const trimmedContent = this.newPostContent.trim();
 
+  
+    
     if (trimmedTitle && trimmedContent) {
       const newPost: Post = {
         id: this.posts.length + 1,
@@ -108,5 +112,9 @@ export class ForumComponent {
         this.postSuccessMessage = '';
       }, 3000);
     }
+  }
+
+  redirectToAuth(): void {
+    console.log('Redirecting to login or register page...');
   }
 }
