@@ -1,43 +1,78 @@
 <div class="forum-container">
-  <h2>Community Forum</h2>
-  <p>Register/login to join discussions.</p>
-  
-  <!-- Post Filters -->
-  <div class="filters">
-    <button class="btn btn-info">Latest</button>
-    <button class="btn btn-info">Trending</button>
-    <button class="btn btn-info">Nearby</button>
-    <button class="btn btn-info">Upcoming Events</button>
+  <h2 class="mb-3 text-success">🌿 Community Forum</h2>
+
+  <!-- Auth Prompt -->
+  <div *ngIf="!isLoggedIn" class="auth-prompt alert alert-info">
+    <p class="mb-2">
+      <strong>Register or login</strong> to join meaningful discussions and contribute to a greener Baguio!
+    </p>
+    <button (click)="redirectToAuth()" class="btn btn-primary">Register / Login</button>
   </div>
 
+  <!-- Post Filters -->
+  <div class="filters d-flex flex-wrap gap-2 my-4">
+    <button (click)="setFilter('all')" class="btn btn-outline-secondary">All</button>
+    <button (click)="setFilter('latest')" class="btn btn-info">Latest</button>
+    <button (click)="setFilter('trending')" class="btn btn-info">Trending</button>
+    <button (click)="setFilter('nearby')" class="btn btn-info">Nearby</button>
+    <button (click)="setFilter('upcoming')" class="btn btn-info">Upcoming Events</button>
+  </div>
+
+  <!-- Post List -->
   <div class="post-list mt-4">
-    <h3>Posts</h3>
+    <h3 class="mb-3 text-primary">📬 Posts</h3>
 
-    <!-- Loop through the posts using *ngFor -->
-    <div *ngFor="let post of posts" class="post">
-      <h4>{{ post.title }}</h4>
-      <p>{{ post.content }}</p>
+    <div *ngIf="filteredPosts.length === 0" class="alert alert-warning">
+      No posts available under "{{ currentFilter }}" filter.
+    </div>
 
-      <!-- Like and Comment Actions -->
-      <button (click)="likePost(post.id)" class="btn btn-primary">Like</button>
-      <button (click)="commentOnPost(post.id)" class="btn btn-secondary">Comment</button>
+    <div *ngFor="let post of filteredPosts" class="post border rounded p-3 mb-3 bg-white shadow-sm">
+      <h4 class="text-success">{{ post.title }}</h4>
+      <p class="text-secondary">{{ post.content }}</p>
+
+      <div class="mb-2">
+        <span *ngFor="let tag of post.tags" class="badge bg-secondary me-1">#{{ tag }}</span>
+      </div>
+
+      <div class="d-flex gap-2">
+        <button (click)="likePost(post.id)" class="btn btn-outline-success btn-sm">👍 Like</button>
+        <button (click)="commentOnPost(post.id)" class="btn btn-outline-primary btn-sm">💬 Comment</button>
+      </div>
     </div>
   </div>
-  
 
-  <!-- Optional: Add a form for creating posts -->
-  <div class="create-post mt-4">
-    <h4>Create a new post:</h4>
-    <form>
-      <div class="form-group">
-        <label for="postTitle">Title</label>
-        <input type="text" id="postTitle" class="form-control" placeholder="Enter post title">
+  <!-- Create New Post (Only for logged-in users) -->
+  <div *ngIf="isLoggedIn" class="create-post mt-5">
+    <h4 class="text-success mb-3">📝 Create a New Post</h4>
+    <form (submit)="createPost(); $event.preventDefault()">
+      <div class="form-group mb-3">
+        <label for="postTitle" class="form-label fw-bold">Title</label>
+        <input
+          type="text"
+          id="postTitle"
+          class="form-control"
+          placeholder="Enter post title"
+          [(ngModel)]="newPostTitle"
+          name="title"
+          required
+        />
+
       </div>
-      <div class="form-group">
-        <label for="postContent">Content</label>
-        <textarea id="postContent" class="form-control" placeholder="Enter post content"></textarea>
+
+      <div class="form-group mb-3">
+        <label for="postContent" class="form-label fw-bold">Content</label>
+        <textarea
+          id="postContent"
+          class="form-control"
+          placeholder="Share your thoughts..."
+          rows="4"
+          [(ngModel)]="newPostContent"
+          name="content"
+          required
+        ></textarea>
       </div>
-      <button type="submit" class="btn btn-success mt-2">Create Post</button>
+
+      <button type="submit" class="btn btn-success">➕ Create Post</button>
     </form>
   </div>
 </div>
