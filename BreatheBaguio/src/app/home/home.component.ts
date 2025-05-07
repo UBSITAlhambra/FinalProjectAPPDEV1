@@ -102,6 +102,41 @@ export class HomeComponent implements AfterViewInit {
     }
   ];
 
+  greenTips = [
+  {
+    title: 'Reduce Plastic Use',
+    description: 'Carry a reusable water bottle and shopping bag to cut down on single-use plastic waste.',
+    imageUrl: 'https://images.pexels.com/photos/3457243/pexels-photo-3457243.jpeg?auto=compress&cs=tinysrgb&w=600'
+    
+  },
+  {
+    title: 'Save Energy at Home',
+    description: 'Switch off lights and unplug electronics when not in use to save energy and reduce emissions.',
+    imageUrl: 'https://images.unsplash.com/photo-1565049981953-379c9c2a5d48?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  },
+  {
+    title: 'Support Local & Organic',
+    description: 'Buy locally grown food to reduce your carbon footprint and support farmers in your area.',
+    imageUrl: 'https://images.unsplash.com/photo-1687422809617-a7d97879b3b0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  },
+  {
+    title: 'Conserve Water',
+    description: 'Fix leaks and turn off the tap when brushing your teeth to conserve water daily.',
+    imageUrl: 'https://images.unsplash.com/photo-1560673429-b9b9338a360a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  },
+  {
+    title: 'Walk or Bike More',
+    description: 'Choose walking or biking for short trips to reduce air pollution and stay healthy.',
+    imageUrl: 'https://images.pexels.com/photos/631986/pexels-photo-631986.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+  },
+  {
+    title: 'Plant a Tree',
+    description: 'Trees help clean the air, combat climate change, and improve local biodiversity.',
+    imageUrl: 'https://images.unsplash.com/photo-1524602585632-a2a01c12307c?q=80&w=2107&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  }
+];
+
+  
   constructor(
     private sanitizer: DomSanitizer,
     @Inject(PLATFORM_ID) private platformId: Object
