@@ -11,6 +11,7 @@ import { SafePipe } from '../../pipes/safe.pipe';
 })
 export class MediaGalleryComponent {
   mediaItems = [
+
     {type: 'image',
       url: 'https://scontent.fmnl15-1.fna.fbcdn.net/v/t39.30808-6/481204839_1189768775846430_5791376946022050161_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_ohc=5foFbNsxcT4Q7kNvwHamcUW&_nc_oc=AdlhoWs7Tkz4yVqogIuPVDSe0vqSbYQElWj1yPKhfmXJv8ujyAs0L-dWhFHjjVnrKUw&_nc_zt=23&_nc_ht=scontent.fmnl15-1.fna&_nc_gid=gWeBuQJSGp-z35vc20MIng&oh=00_AfJZn7BDMKfLyA9TxQogXW9X-VCtwlxGcMLUWxFWGa4IiQ&oe=681F7AF5',
       title: 'First Electric Vehicle' },
@@ -44,5 +45,6 @@ export class MediaGalleryComponent {
     {type: 'video',
       url: 'https://www.youtube.com/embed/8ZzgzW4KPmo?si=_-CFpjitaKNnKKHF',
       title: 'A Liveable, Inclusive and Creative City, Baguio'}
+
   ];
 }
