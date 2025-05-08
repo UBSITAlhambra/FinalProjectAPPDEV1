@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router'; // <-- Add this
 
 interface Post {
   id: number;
@@ -17,6 +18,8 @@ interface Post {
   styleUrls: ['./forum.component.css']
 })
 export class ForumComponent {
+  constructor(private router: Router) {} // <-- Inject the Router
+
   posts: Post[] = [
     {
       id: 1,
@@ -62,6 +65,15 @@ export class ForumComponent {
 
   // Available tags
   tagOptions = ['latest', 'trending', 'nearby', 'upcoming'];
+
+  // Placeholder login check
+  isLoggedIn: boolean = false;
+
+  // Redirect to login or register
+  redirectToAuth(): void {
+    // Navigate to the login route (replace with your actual route)
+    this.router.navigate(['/login']);
+  }
 
   // Get filtered posts based on the current filter
   get filteredPosts(): Post[] {

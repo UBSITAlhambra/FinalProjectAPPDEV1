@@ -22,7 +22,7 @@
   <div class="post-list mt-4">
     <h3 class="mb-3 text-primary">📬 Posts</h3>
 
-    <div *ngIf="filteredPosts.length === 0" class="alert alert-warning">
+    <div ngIf="filteredPosts.length === 0" class="alert alert-warning">
       No posts available under "{{ currentFilter }}" filter.
     </div>
 
@@ -42,7 +42,7 @@
   </div>
 
   <!-- Create New Post (Only for logged-in users) -->
-  <div *ngIf="isLoggedIn" class="create-post mt-5">
+  <div ngIf="isLoggedIn" class="create-post mt-5">
     <h4 class="text-success mb-3">📝 Create a New Post</h4>
     <form (submit)="createPost(); $event.preventDefault()">
       <div class="form-group mb-3">
