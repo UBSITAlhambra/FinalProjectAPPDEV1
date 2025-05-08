@@ -11,6 +11,7 @@ import { SafePipe } from '../../pipes/safe.pipe';
 })
 export class MediaGalleryComponent {
   mediaItems = [
+
     {type: 'image',
       url: 'https://scontent.fmnl15-1.fna.fbcdn.net/v/t39.30808-6/481204839_1189768775846430_5791376946022050161_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_ohc=5foFbNsxcT4Q7kNvwHamcUW&_nc_oc=AdlhoWs7Tkz4yVqogIuPVDSe0vqSbYQElWj1yPKhfmXJv8ujyAs0L-dWhFHjjVnrKUw&_nc_zt=23&_nc_ht=scontent.fmnl15-1.fna&_nc_gid=gWeBuQJSGp-z35vc20MIng&oh=00_AfJZn7BDMKfLyA9TxQogXW9X-VCtwlxGcMLUWxFWGa4IiQ&oe=681F7AF5',
       title: 'First Electric Vehicle' },
@@ -113,9 +114,7 @@ export class MediaGalleryComponent {
       title: "Baguio's Journey to Gender-Inclusive Flood Early Warning Systems"},
     {type: 'video',
       url: 'https://www.youtube.com/embed/8ZzgzW4KPmo?si=_-CFpjitaKNnKKHF',
-<<<<<<< Updated upstream
-      title: 'A Liveable, Inclusive and Creative City, Baguio'}
-=======
+
       title: 'A Liveable, Inclusive and Creative City, Baguio'},
     {
       type: 'video',
@@ -132,7 +131,7 @@ export class MediaGalleryComponent {
       url: 'https://images.unsplash.com/photo-1542800952-e5471ed41326?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       title: 'Baguio City Climate Action Plan'
     }
->>>>>>> Stashed changes
+
   ];
 
   filter: 'all' | 'image' | 'video' = 'all';

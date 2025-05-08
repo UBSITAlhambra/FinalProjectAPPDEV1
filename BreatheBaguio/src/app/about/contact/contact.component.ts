@@ -1,30 +1,45 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';  // To enable ngModel
-import { ForumComponent } from './forum/forum.component';  // Import ForumComponent
-import { CommonModule } from '@angular/common';  // Import CommonModule to support *ngIf, *ngFor
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { ForumComponent } from './forum/forum.component';
+
+// Define the contact model
+interface Contact {
+  email: string;
+  message: string;
+}
 
 @Component({
   selector: 'app-contact',
-  standalone: true,  // Mark this as a standalone component
-  imports: [FormsModule, ForumComponent, CommonModule],  // Import FormsModule, ForumComponent, and CommonModule
+  standalone: true,
+  imports: [CommonModule, FormsModule, ForumComponent],
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent {
-  contact = {
+  // Contact form data
+  contact: Contact = {
     email: '',
     message: ''
   };
 
-  showForum = false;  // Flag to toggle forum visibility
+  // Control forum visibility
+  showForum: boolean = false;
 
-  // Method to handle form submission
-  onSubmit() {
-    alert(`Message sent from: ${this.contact.email}`);
-    this.contact = { email: '', message: '' }; // Reset form after submission
+  // Toggle forum visibility
+  toggleForum(): void {
+    this.showForum = !this.showForum;
   }
 
-  toggleForum() {
-    this.showForum = !this.showForum;  // Toggle forum visibility
+  // Form submission handler
+  onSubmit(): void {
+    console.log('Form submitted:', this.contact);
+    // Reset form after submission
+    this.contact = {
+      email: '',
+      message: ''
+    };
+    // You can add more logic here (e.g., sending data to a service)
+    alert('Message sent successfully!');
   }
 }
