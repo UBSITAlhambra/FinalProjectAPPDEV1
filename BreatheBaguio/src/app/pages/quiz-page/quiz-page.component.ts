@@ -126,15 +126,6 @@ export class QuizPageComponent {
       }
     });
 
-    // Sustainable action (Image selection - add score based on selection)
-    if (formValues.sustainableAction === 'Recycle') {
-      this.score -= 2;
-    } else if (formValues.sustainableAction === 'Plant Trees') {
-      this.score -= 3;
-    } else if (formValues.sustainableAction === 'Ride Bike') {
-      this.score -= 1;
-    }
-
     // Ensure score does not go negative
     if (this.score < 0) this.score = 0;
   }
