@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
-import { Router } from '@angular/router'; // Required for navigation
+import { Router } from '@angular/router';
 
 interface Post {
   id: number;
@@ -19,15 +18,12 @@ interface Post {
   styleUrls: ['./forum.component.css']
 })
 export class ForumComponent {
-
-  isLoggedIn: boolean = false; 
-  
-
+  // Posts data
   posts: Post[] = [
     {
       id: 1,
       title: 'How to Reduce Household Waste in Baguio',
-      content: 'Hi everyone! I’m looking for effective ways to minimize household waste.',
+      content: 'Hi everyone! I am looking for effective ways to minimize household waste.',
       tags: ['latest']
     },
     {
@@ -56,52 +52,37 @@ export class ForumComponent {
     }
   ];
 
-
+  // UI state
   currentFilter: string = 'all'; // Default filter
+  isLoggedIn: boolean = false;
+  showAuthForm: boolean = false;
+  postSuccessMessage: string = '';
+  authError: string = '';
 
-
-  // Form input values
+  // Form inputs
   newPostTitle = '';
   newPostContent = '';
   newPostTag: string = 'latest';
-
-
-
-  // Login state
-  isLoggedIn: boolean = false;
   username: string = '';
   password: string = '';
-  authError: string = '';
-  showAuthForm: boolean = false;
-
-  // Success message
-  postSuccessMessage: string = '';
 
   // Available tag options
   tagOptions = ['latest', 'trending', 'nearby', 'upcoming'];
 
-
-  // Placeholder login check
-  isLoggedIn: boolean = false;
-
-  // Redirect to login or register
-  redirectToAuth(): void {
-    // Navigate to the login route (replace with your actual route)
-    this.router.navigate(['/login']);
-  }
+  constructor(private router: Router) {}
 
   // Get filtered posts based on the current filter
-
-
   get filteredPosts(): Post[] {
     if (this.currentFilter === 'all') return this.posts;
     return this.posts.filter(post => post.tags.includes(this.currentFilter));
   }
 
+  // Filter methods
   setFilter(filter: string): void {
     this.currentFilter = filter;
   }
 
+  // Post interaction methods
   likePost(postId: number): void {
     console.log('Liked Post with ID:', postId);
   }
@@ -110,7 +91,7 @@ export class ForumComponent {
     console.log('Commenting on Post with ID:', postId);
   }
 
-
+  // Authentication methods
   toggleAuthForm(): void {
     this.showAuthForm = !this.showAuthForm;
     this.authError = '';
@@ -132,15 +113,15 @@ export class ForumComponent {
     this.password = '';
   }
 
+  redirectToAuth(): void {
+    // Navigate to the login route
+    this.router.navigate(['/login']);
+  }
 
   // Create new post
-
   createPost(): void {
-    console.log('Redirecting to login or register page...');
     const trimmedTitle = this.newPostTitle.trim();
     const trimmedContent = this.newPostContent.trim();
-
-  
     
     if (trimmedTitle && trimmedContent) {
       const newPost: Post = {
@@ -161,10 +142,4 @@ export class ForumComponent {
       }, 3000);
     }
   }
-
-
-  redirectToAuth(): void {
-    console.log('Redirecting to login or register page...');
-  }
 }
-
