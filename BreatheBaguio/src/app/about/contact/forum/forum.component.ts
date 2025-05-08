@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { Router } from '@angular/router';
-
 
 interface Post {
   id: number;
@@ -20,11 +18,10 @@ interface Post {
   styleUrls: ['./forum.component.css']
 })
 export class ForumComponent {
-
-  constructor(private router: Router) {} // <-- Inject the Router
+  // Constructor - only define once
+  constructor(private router: Router) {}
 
   // Posts data
-
   posts: Post[] = [
     {
       id: 1,
@@ -58,42 +55,22 @@ export class ForumComponent {
     }
   ];
 
-
-  // UI state
+  // UI state - removed duplicates
   currentFilter: string = 'all'; // Default filter
   isLoggedIn: boolean = false;
   showAuthForm: boolean = false;
   postSuccessMessage: string = '';
   authError: string = '';
 
-  // Form inputs
+  // Form inputs - removed duplicates
   newPostTitle = '';
   newPostContent = '';
   newPostTag: string = 'latest';
   username: string = '';
   password: string = '';
-
-
-  // UI state
-  currentFilter: string = 'all'; // Default filter
-  isLoggedIn: boolean = false;
-  showAuthForm: boolean = false;
-  postSuccessMessage: string = '';
-  authError: string = '';
-
-  // Form inputs
-  newPostTitle = '';
-  newPostContent = '';
-  newPostTag: string = 'latest';
-  username: string = '';
-  password: string = '';
-
 
   // Available tag options
   tagOptions = ['latest', 'trending', 'nearby', 'upcoming'];
-
-  constructor(private router: Router) {}
-
 
   // Get filtered posts based on the current filter
   get filteredPosts(): Post[] {
@@ -101,16 +78,12 @@ export class ForumComponent {
     return this.posts.filter(post => post.tags.includes(this.currentFilter));
   }
 
-
   // Filter methods
-
   setFilter(filter: string): void {
     this.currentFilter = filter;
   }
 
-
   // Post interaction methods
-
   likePost(postId: number): void {
     console.log('Liked Post with ID:', postId);
   }
@@ -119,7 +92,6 @@ export class ForumComponent {
     console.log('Commenting on Post with ID:', postId);
   }
 
-
   // Authentication methods
   toggleAuthForm(): void {
     this.showAuthForm = !this.showAuthForm;
@@ -151,40 +123,6 @@ export class ForumComponent {
   createPost(): void {
     const trimmedTitle = this.newPostTitle.trim();
     const trimmedContent = this.newPostContent.trim();
-    
-
-  // Authentication methods
-  toggleAuthForm(): void {
-    this.showAuthForm = !this.showAuthForm;
-    this.authError = '';
-  }
-
-  login(): void {
-    if (this.username.trim() && this.password.trim()) {
-      this.isLoggedIn = true;
-      this.showAuthForm = false;
-      this.authError = '';
-    } else {
-      this.authError = '⚠️ Please enter both username and password.';
-    }
-  }
-
-  logout(): void {
-    this.isLoggedIn = false;
-    this.username = '';
-    this.password = '';
-  }
-
-  redirectToAuth(): void {
-    // Navigate to the login route
-    this.router.navigate(['/login']);
-  }
-
-  // Create new post
-  createPost(): void {
-    const trimmedTitle = this.newPostTitle.trim();
-    const trimmedContent = this.newPostContent.trim();
-    
 
     if (trimmedTitle && trimmedContent) {
       const newPost: Post = {
