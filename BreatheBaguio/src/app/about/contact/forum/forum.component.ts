@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+<<<<<<< Updated upstream
 import { Router } from '@angular/router'; // <-- Add this
+=======
+import { Router } from '@angular/router';
+>>>>>>> Stashed changes
 
 interface Post {
   id: number;
@@ -18,13 +22,17 @@ interface Post {
   styleUrls: ['./forum.component.css']
 })
 export class ForumComponent {
+<<<<<<< Updated upstream
   constructor(private router: Router) {} // <-- Inject the Router
 
+=======
+  // Posts data
+>>>>>>> Stashed changes
   posts: Post[] = [
     {
       id: 1,
       title: 'How to Reduce Household Waste in Baguio',
-      content: 'Hi everyone! I’m looking for effective ways to minimize household waste.',
+      content: 'Hi everyone! I am looking for effective ways to minimize household waste.',
       tags: ['latest']
     },
     {
@@ -53,6 +61,7 @@ export class ForumComponent {
     }
   ];
 
+<<<<<<< Updated upstream
   currentFilter: string = 'all'; // Default to 'all' posts
 
   // Form input values
@@ -62,10 +71,26 @@ export class ForumComponent {
 
   // Success message after creating post
   postSuccessMessage: string = '';
+=======
+  // UI state
+  currentFilter: string = 'all'; // Default filter
+  isLoggedIn: boolean = false;
+  showAuthForm: boolean = false;
+  postSuccessMessage: string = '';
+  authError: string = '';
+
+  // Form inputs
+  newPostTitle = '';
+  newPostContent = '';
+  newPostTag: string = 'latest';
+  username: string = '';
+  password: string = '';
+>>>>>>> Stashed changes
 
   // Available tags
   tagOptions = ['latest', 'trending', 'nearby', 'upcoming'];
 
+<<<<<<< Updated upstream
   // Placeholder login check
   isLoggedIn: boolean = false;
 
@@ -74,6 +99,9 @@ export class ForumComponent {
     // Navigate to the login route (replace with your actual route)
     this.router.navigate(['/login']);
   }
+=======
+  constructor(private router: Router) {}
+>>>>>>> Stashed changes
 
   // Get filtered posts based on the current filter
   get filteredPosts(): Post[] {
@@ -81,12 +109,20 @@ export class ForumComponent {
     return this.posts.filter(post => post.tags.includes(this.currentFilter));
   }
 
+<<<<<<< Updated upstream
   // Set current post filter
+=======
+  // Filter methods
+>>>>>>> Stashed changes
   setFilter(filter: string): void {
     this.currentFilter = filter;
   }
 
+<<<<<<< Updated upstream
   // Like a post
+=======
+  // Post interaction methods
+>>>>>>> Stashed changes
   likePost(postId: number): void {
     console.log('Liked Post with ID:', postId);
   }
@@ -96,11 +132,46 @@ export class ForumComponent {
     console.log('Commenting on Post with ID:', postId);
   }
 
+<<<<<<< Updated upstream
   // Create a new post
   createPost(): void {
     const trimmedTitle = this.newPostTitle.trim();
     const trimmedContent = this.newPostContent.trim();
 
+=======
+  // Authentication methods
+  toggleAuthForm(): void {
+    this.showAuthForm = !this.showAuthForm;
+    this.authError = '';
+  }
+
+  login(): void {
+    if (this.username.trim() && this.password.trim()) {
+      this.isLoggedIn = true;
+      this.showAuthForm = false;
+      this.authError = '';
+    } else {
+      this.authError = '⚠️ Please enter both username and password.';
+    }
+  }
+
+  logout(): void {
+    this.isLoggedIn = false;
+    this.username = '';
+    this.password = '';
+  }
+
+  redirectToAuth(): void {
+    // Navigate to the login route
+    this.router.navigate(['/login']);
+  }
+
+  // Create new post
+  createPost(): void {
+    const trimmedTitle = this.newPostTitle.trim();
+    const trimmedContent = this.newPostContent.trim();
+    
+>>>>>>> Stashed changes
     if (trimmedTitle && trimmedContent) {
       const newPost: Post = {
         id: this.posts.length + 1,
