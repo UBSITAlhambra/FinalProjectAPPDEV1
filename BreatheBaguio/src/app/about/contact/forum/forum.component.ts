@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+
 import { Router } from '@angular/router'; // Required for navigation
 
 interface Post {
@@ -18,8 +19,10 @@ interface Post {
   styleUrls: ['./forum.component.css']
 })
 export class ForumComponent {
+
   isLoggedIn: boolean = false; 
   
+
   posts: Post[] = [
     {
       id: 1,
@@ -66,7 +69,18 @@ export class ForumComponent {
   // Available tag options
   tagOptions = ['latest', 'trending', 'nearby', 'upcoming'];
 
-  // Computed filtered posts
+
+  // Placeholder login check
+  isLoggedIn: boolean = false;
+
+  // Redirect to login or register
+  redirectToAuth(): void {
+    // Navigate to the login route (replace with your actual route)
+    this.router.navigate(['/login']);
+  }
+
+  // Get filtered posts based on the current filter
+
   get filteredPosts(): Post[] {
     if (this.currentFilter === 'all') return this.posts;
     return this.posts.filter(post => post.tags.includes(this.currentFilter));
@@ -115,7 +129,9 @@ export class ForumComponent {
     }
   }
 
+
   redirectToAuth(): void {
     console.log('Redirecting to login or register page...');
   }
 }
+
