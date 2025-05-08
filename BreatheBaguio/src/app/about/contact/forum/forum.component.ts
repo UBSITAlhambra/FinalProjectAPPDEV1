@@ -56,12 +56,23 @@ export class ForumComponent {
     }
   ];
 
+
   currentFilter: string = 'all'; // Default filter
+
 
   // Form input values
   newPostTitle = '';
   newPostContent = '';
   newPostTag: string = 'latest';
+
+
+
+  // Login state
+  isLoggedIn: boolean = false;
+  username: string = '';
+  password: string = '';
+  authError: string = '';
+  showAuthForm: boolean = false;
 
   // Success message
   postSuccessMessage: string = '';
@@ -81,27 +92,49 @@ export class ForumComponent {
 
   // Get filtered posts based on the current filter
 
+
   get filteredPosts(): Post[] {
     if (this.currentFilter === 'all') return this.posts;
     return this.posts.filter(post => post.tags.includes(this.currentFilter));
   }
 
-  // Update filter
   setFilter(filter: string): void {
     this.currentFilter = filter;
   }
 
-  // Like a post
   likePost(postId: number): void {
     console.log('Liked Post with ID:', postId);
   }
 
-  // Comment on a post
   commentOnPost(postId: number): void {
     console.log('Commenting on Post with ID:', postId);
   }
 
+
+  toggleAuthForm(): void {
+    this.showAuthForm = !this.showAuthForm;
+    this.authError = '';
+  }
+
+  login(): void {
+    if (this.username.trim() && this.password.trim()) {
+      this.isLoggedIn = true;
+      this.showAuthForm = false;
+      this.authError = '';
+    } else {
+      this.authError = '⚠️ Please enter both username and password.';
+    }
+  }
+
+  logout(): void {
+    this.isLoggedIn = false;
+    this.username = '';
+    this.password = '';
+  }
+
+
   // Create new post
+
   createPost(): void {
     console.log('Redirecting to login or register page...');
     const trimmedTitle = this.newPostTitle.trim();
