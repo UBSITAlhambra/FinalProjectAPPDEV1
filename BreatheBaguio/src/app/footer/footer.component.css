@@ -1,0 +1,44 @@
+footer {
+    background-color: #f8f9fa; /* Lumen light background color */
+    color: #222921; /* Dark text color for readability */
+    padding: 1.5rem 0; /* Adjusted padding for spacing */
+  }
+  
+  footer a {
+    color: #143313; /* Dark color for links */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s ease-in-out; /* Smooth transition on hover */
+  }
+  
+  footer a:hover {
+    color: #0d6efd; /* Blue color on hover for links */
+  }
+  
+  footer .text-muted {
+    color: #6c757d; /* Lumen muted text color for the copyright section */
+  }
+  
+  footer .gap-3 {
+    gap: 1rem; /* Space between the links */
+  }
+  
+  footer .d-flex {
+    display: flex;
+  }
+  
+  footer .text-center {
+    text-align: center;
+  }
+  
+  footer .text-md-end {
+    text-align: right;
+  }
+  
+  footer .text-md-start {
+    text-align: left;
+  }
+  
+  footer .container {
+    max-width: 1200px; /* Ensures a good width on larger screens */
+  }
+  

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+import { Router } from '@angular/router'; // Required for navigation
+
 interface Post {
   id: number;
   title: string;
@@ -17,6 +19,10 @@ interface Post {
   styleUrls: ['./forum.component.css']
 })
 export class ForumComponent {
+
+  isLoggedIn: boolean = false; 
+  
+
   posts: Post[] = [
     {
       id: 1,
@@ -50,18 +56,16 @@ export class ForumComponent {
     }
   ];
 
-  currentFilter: string = 'all';
+
+  currentFilter: string = 'all'; // Default filter
+
 
   // Form input values
   newPostTitle = '';
   newPostContent = '';
   newPostTag: string = 'latest';
 
-  // Tags
-  tagOptions = ['latest', 'trending', 'nearby', 'upcoming'];
 
-  // Success message
-  postSuccessMessage: string = '';
 
   // Login state
   isLoggedIn: boolean = false;
@@ -70,7 +74,25 @@ export class ForumComponent {
   authError: string = '';
   showAuthForm: boolean = false;
 
-  // Filter logic
+  // Success message
+  postSuccessMessage: string = '';
+
+  // Available tag options
+  tagOptions = ['latest', 'trending', 'nearby', 'upcoming'];
+
+
+  // Placeholder login check
+  isLoggedIn: boolean = false;
+
+  // Redirect to login or register
+  redirectToAuth(): void {
+    // Navigate to the login route (replace with your actual route)
+    this.router.navigate(['/login']);
+  }
+
+  // Get filtered posts based on the current filter
+
+
   get filteredPosts(): Post[] {
     if (this.currentFilter === 'all') return this.posts;
     return this.posts.filter(post => post.tags.includes(this.currentFilter));
@@ -87,6 +109,7 @@ export class ForumComponent {
   commentOnPost(postId: number): void {
     console.log('Commenting on Post with ID:', postId);
   }
+
 
   toggleAuthForm(): void {
     this.showAuthForm = !this.showAuthForm;
@@ -109,10 +132,16 @@ export class ForumComponent {
     this.password = '';
   }
 
+
+  // Create new post
+
   createPost(): void {
+    console.log('Redirecting to login or register page...');
     const trimmedTitle = this.newPostTitle.trim();
     const trimmedContent = this.newPostContent.trim();
 
+  
+    
     if (trimmedTitle && trimmedContent) {
       const newPost: Post = {
         id: this.posts.length + 1,
@@ -132,4 +161,10 @@ export class ForumComponent {
       }, 3000);
     }
   }
+
+
+  redirectToAuth(): void {
+    console.log('Redirecting to login or register page...');
+  }
 }
+
